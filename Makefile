@@ -6,7 +6,7 @@
 #    By: tcajee <tcajee@student.wethinkcode.co.za>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/04 16:49:54 by tcajee            #+#    #+#              #
-#    Updated: 2019/06/04 16:58:02 by tcajee           ###   ########.fr        #
+#    Updated: 2019/06/04 17:11:06 by tcajee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ configure:
 	sh $(SRCS)
 
 clean:
-	cd ~
-	rm -rf .oh-my-zsh .bashrc .zshrc .vim_runtime .vimrc
+	rm -rf ~/.oh-my-zsh ~/.bashrc ~/.zshrc ~/.vim_runtime ~/.vimrc
 
 re: clean all
 
