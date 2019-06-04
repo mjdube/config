@@ -47,11 +47,22 @@ let mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=30
+set so=7
+
+" Avoid garbled characters in Chinese language windows OS
+let $LANG='en' 
+set langmenu=en
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 
 " Turn on the Wild menu
 set wildmenu
@@ -162,7 +173,7 @@ set noswapfile
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-" set expandtab
+set expandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -262,17 +273,17 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 map 0 ^
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
-"nmap <M-j> mz:m+<cr>`z
-"nmap <M-k> mz:m-2<cr>`z
-"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-"if has("mac") || has("macunix")
-"  nmap <D-j> <M-j>
-"  nmap <D-k> <M-k>
-"  vmap <D-j> <M-j>
-"  vmap <D-k> <M-k>
-"endif
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
@@ -305,7 +316,7 @@ map <leader>s? z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-"noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>

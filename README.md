@@ -1,2 +1,0 @@
-# config
-Personal config files
