@@ -1,7 +1,7 @@
 #! bin/bash
 
-echo "installing Oh-My-ZSH"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "installing zsh and Oh-My-ZSH"
+curl -sSL git.io/jovial | bash
 echo "Done."
 cd ~/.configs
 echo "installing Vimrc"
