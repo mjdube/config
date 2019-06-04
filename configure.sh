@@ -14,3 +14,5 @@ echo "Done."
 echo "Copying .bashrc"
 cp .bashrc ..
 echo "Done."
+zsh
+
