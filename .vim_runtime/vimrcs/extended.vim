@@ -22,8 +22,7 @@ set guioptions-=L
 
 " Colorscheme
 set background=dark
-colorscheme peaksea
-
+colorscheme nets-away
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,22 +198,6 @@ set hlsearch        "Highlight all matches
 highlight clear Search
 highlight       Search    ctermfg=White  ctermbg=Black  cterm=bold
 highlight    IncSearch    ctermfg=White  ctermbg=Red    cterm=bold
-
-" Absolute direction for n and N...
-nnoremap  <silent><expr> n  'Nn'[v:searchforward] . ":call HLNext()\<CR>"
-nnoremap  <silent><expr> N  'nN'[v:searchforward] . ":call HLNext()\<CR>"
-
-"Delete in normal mode to switch off highlighting till next search and clear messages...
-nmap <silent> <BS> :call HLNextOff() <BAR> :nohlsearch <BAR> :call VG_Show_CursorColumn('off')<CR>::HierClear<CR>
-
-"Double-delete to remove trailing whitespace...
-nmap <silent> <BS><BS>  mz:call TrimTrailingWS()<CR>`z
-
-function! TrimTrailingWS ()
-    if search('\s\+$', 'cnw')
-        :%s/\s\+$//g
-    endif
-endfunction
 
 
 "=====[ Enable smartwrapping ]==================================
@@ -645,12 +628,6 @@ nmap <silent> ;w :silent call BRF_ToggleRuler()<CR><C-L>
 
 let &rulerformat = g:BRF_new_rulerformat
 set ruler
-
-
-"======[ Fix colourscheme for 256 colours ]============================
-
-highlight Visual       ctermfg=Yellow ctermbg=26    " 26 = Dusty blue background
-highlight SpecialKey   cterm=bold ctermfg=Blue
 
 
 "======[ Add a $$ command in Visual mode ]==============================
