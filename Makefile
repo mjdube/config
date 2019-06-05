@@ -11,19 +11,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = configure.sh 
+CONFIG = configure.sh 
+
+LOADRC = loadrc.sh
 
 all: configure 
 
 configure:
-	sh $(SRCS)
+	sh $(CONFIG)
+
+reload: clean 
+	sh $(LOADRC)
 
 clean:
-	rm -rf ~/.oh-my-zsh ~/.bashrc ~/.zshrc ~/.vim_runtime ~/.vimrc
+	rm -rf ~/.vim_runtime ~/.vimrc
 
-re: clean all
+fclean: clean 
+	rm -rf ~/.oh-my-zsh ~/.bashrc ~/.zshrc
 
-destroy: clean
+re: fclean all
+
+destroy: fclean
 	rm -rf ~/.configs
 
-.PHONY: all, clean, configure, destroy
+.PHONY: all, clean, configure, destroy, fclean, re, reload 
