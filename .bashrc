@@ -118,6 +118,8 @@ if ! shopt -oq posix; then
 fi
 if [ $TILIX_ID ] || [ $VTE_VERSION ] ; then source /etc/profile.d/vte.sh; fi # Ubuntu Budgie END
 
+export PATH="/usr/local/bin:$PATH"
+
 export MAIL42=tcajee@student.wethinkcode.co.za
 export USER42=tcajee
 set -o vi

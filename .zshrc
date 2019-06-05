@@ -75,8 +75,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export MAIL42=tcajee@student.wethinkcode.co.za
-export USER42=tcajee
+export PATH="/usr/local/bin:$PATH"
+#export MAIL42=tcajee@student.wethinkcode.co.za
+#export USER42=tcajee
 
 bindkey -v
