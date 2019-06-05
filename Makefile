@@ -13,21 +13,21 @@
 
 CONFIG = configure.sh 
 
-LOADRC = loadrc.sh
+RELOAD = reload.sh
 
 all: configure 
 
 configure:
 	sh $(CONFIG)
 
-reload: clean 
-	sh $(LOADRC)
+reload: fclean 
+	sh $(RELOAD)
 
 clean:
-	rm -rf ~/.vim_runtime ~/.vimrc
+	rm -rf ~/.vim_runtime ~/.vimrc ~/.oh-my-zsh
 
 fclean: clean 
-	rm -rf ~/.oh-my-zsh ~/.bashrc ~/.zshrc
+	rm -rf ~/.bashrc ~/.zshrc
 
 re: fclean all
 

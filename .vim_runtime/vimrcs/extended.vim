@@ -22,7 +22,7 @@ set guioptions-=L
 
 " Colorscheme
 set background=dark
-colorscheme nets-away
+colorscheme blaquemagick
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,7 +160,7 @@ endfunc
 
 "=====[ Comments are important ]==================
 
-highlight Comment term=bold ctermfg=white
+"highlight Comment term=bold ctermfg=white
 
 
 "====[ Escape insert mode via 'jj' ]=============================

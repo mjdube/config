@@ -1,8 +1,5 @@
 #! bin/bash
 
-echo "installing zsh and Oh-My-ZSH"
-curl -sSL git.io/jovial | bash
-echo "Done."
 cd ~/.configs
 echo " Copying oh-my-zsh configuration"
 cp -R .oh-my-zsh ~/.oh-my-zsh
@@ -18,4 +15,3 @@ echo "Copying .bashrc"
 cp .bashrc ..
 echo "Done."
 zsh
-

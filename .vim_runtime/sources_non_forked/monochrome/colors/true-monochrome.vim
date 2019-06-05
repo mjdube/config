@@ -14,7 +14,6 @@ endif
 
 "" give it a name and set the background
 let colors_name="true-monochrome"
-set background=dark
 
 ""
 "" now, on to the good stuff!
