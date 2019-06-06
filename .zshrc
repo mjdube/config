@@ -504,6 +504,51 @@ if zplug check "bhilburn/powerlevel9k"; then
     # Easily switch primary foreground/background colors
     #DEFAULT_FOREGROUND=038 DEFAULT_BACKGROUND=024 PROMPT_COLOR=038
         
+    
+    # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Power Level 9k custom
+
+    #P9K_PROMPT_ON_NEWLINE=true
+    #P9K_RPROMPT_ON_NEWLINE=true
+    #P9K_CONTEXT_DEFAULT_BACKGROUND='black'
+    #P9K_CONTEXT_DEFAULT_FOREGROUND='009'
+    #P9K_DIR_HOME_BACKGROUND='009'
+    #P9K_DIR_HOME_FOREGROUND='black'
+    #P9K_DIR_DEFAULT_BACKGROUND='196'
+    #P9K_DIR_DEFAULT_FOREGROUND='232'
+    #P9K_MODE='nerdfont-complete'
+    #P9K_HOME_ICON='\UF20E'
+    #P9K_SUB_ICON='\UF07C'
+    #P9K_FOLDER_ICON='\UF07B'
+    #P9K_LEFT_SEGMENT_SEPARATOR='\UE0BC'
+    #P9K_RIGHT_SEGMENT_SEPARATOR='\UE0BA'
+    #P9K_RIGHT_PROMPT_ELEMENTS=(anaconda battery)
+    #P9K_ANACONDA_RIGHT_DELIMITER='>'
+    #P9K_ANACONDA_LEFT_DELIMITER='<'
+    #P9K_ANACONDA_BACKGROUND='24'
+    #P9K_ANACONDA_FOREGROUND='111'
+    #P9K_BATTERY_CHARGING='yellow'
+    #P9K_BATTERY_CHARGED='blue'
+    #P9K_BATTERY_LOW_THRESHOLD='20'
+    #P9K_BATTERY_LOW_COLOR='red'
+    #P9K_BATTERY_CHARGED_BACKGROUND='46'
+    #P9K_BATTERY_CHARGED_FOREGROUND='235'
+    #P9K_BATTERY_CHARGING_BACKGROUND='178'
+    #P9K_BATTERY_CHARGING_FOREGROUND='235'
+    #P9K_BATTERY_LOW_BACKGROUND='88'
+    #P9K_BATTERY_LOW_FOREGROUND='235'
+    #P9K_BATTERY_CHARGED_ICON='/UF240'
+    #P9K_BATTERY_LOW_ICON='/UF240'
+    #P9K_BATTERY_CHARGING_ICON='/UF1E6'
+    #P9K_BATTERY_DISCONNECTED_FOREGROUND='195'
+    #P9K_BATTERY_DISCONNECTED_BACKGROUND='009'
+    #P9K_BATTERY_ICON='\UF1E6'
+    ## P9K_ANACONDA_ICON=''
+    ##P9K_STATUS_OK_ICON='\UF2B0'
+    ## P9K_TIME_BACKGROUND='32'
+    ## P9K_TIME_FOREGROUND='0'
+    ##P9K_VCS_CLEAN_FOREGROUND='099'
+
+    
     #_below__________________________________________________________
         
     # P9K_MODE="nerdfont-complete"
@@ -563,21 +608,22 @@ if zplug check "bhilburn/powerlevel9k"; then
 
     #_below__________________________________________________________
     
- 
+   
+
     ZSH_THEME="powerlevel9k/powerlevel9k"
-    POWERLEVEL9K_MODE="nerdfont-complete"
-    POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir_writable dir vcs)
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs time disk_usage ram)
-    POWERLEVEL9K_ROOT_ICON="\uF09C"
-    POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+    P9K_MODE="nerdfont-complete"
+    P9K_PROMPT_ON_NEWLINE=true
+    P9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir_writable dir vcs)
+    P9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs time disk_usage ram)
+    P9K_USER_ROOT_ICON="\uF09C"
+    P9K_TIME_FORMAT="%D{%H:%M}"
     
-    #POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-    #POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-    #POWERLEVEL9K_USER_ICON="\uF415" # 
-    #POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
-    #POWERLEVEL9K_VCS_GIT_ICON='\uF408 '
-    #POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
+    #P9K_MULTILINE_LAST_PROMPT_PREFIX="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+    #P9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+    #P9K_USER_ICON="\uF415" # 
+    #P9K_SUDO_ICON=$'\uF09C' # 
+    #P9K_VCS_GIT_ICON='\uF408 '
+    #P9K_VCS_GIT_GITHUB_ICON='\uF408 '
 
     #______below_______________________________________________________
     
