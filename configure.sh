@@ -13,6 +13,7 @@ cd ~/.configs/fonts
 rm -rf .git .gitignore
 echo "Done."
 echo "Installing Vim configuration"
+cd ~/.configs
 cp -R .vim_runtime ~/.vim_runtime
 sh ~/.vim_runtime/install_vimrc.sh
 echo "Done."
