@@ -4,13 +4,8 @@ echo "installing zsh and Oh-My-ZSH"
 curl -sSL git.io/jovial | bash
 echo "Done."
 cd ~/.configs
-#echo "Installing pl9k"
-#git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 echo "Installing fonts"
-git clone https://github.com/powerline/fonts.git --depth=1 ~/.configs/fonts
-cd ~/.configs/fonts
-./install.sh
-rm -rf .git .gitignore
+cd ~/Library/Fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
 echo "Done."
 echo "Installing Vim configuration"
 cd ~/.configs
