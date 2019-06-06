@@ -4,8 +4,8 @@ echo "installing zsh and Oh-My-ZSH"
 curl -sSL git.io/jovial | bash
 echo "Done."
 cd ~/.configs
-echo "Installing pl9k"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+#echo "Installing pl9k"
+#git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 echo "Installing fonts"
 git clone https://github.com/powerline/fonts.git --depth=1 ~/.configs/fonts
 cd ~/.configs/fonts
