@@ -11,27 +11,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-CONFIG = configure.sh 
+CONFIG = configure.sh
 
 RELOAD = reload.sh
 
-all: configure 
+all: configure
 
-configure:
+configure: fclean
 	sh $(CONFIG)
 
-reload: fclean 
+reload: clean
 	sh $(RELOAD)
 
 clean:
-	rm -rf ~/.vim_runtime ~/.vimrc ~/.oh-my-zsh
+	rm -rf ~/.vim_runtime ~/.vimrc ~/.bashrc ~/.zshrc
 
-fclean: clean 
-	rm -rf ~/.bashrc ~/.zshrc
+fclean: clean
+	rm -rf ~/.oh-my-zsh
 
 re: fclean all
 
 destroy: fclean
 	rm -rf ~/.configs
 
-.PHONY: all, clean, configure, destroy, fclean, re, reload 
+.PHONY: all, clean, configure, destroy, fclean, re, reload
