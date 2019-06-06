@@ -346,7 +346,6 @@ bindkey "^[^?" tcsh-backward-delete-word # urxvt
 #unfunction setup_agents
 
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
-DIRCOLORS_SOLARIZED_ZSH_THEME="256dark"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
@@ -504,8 +503,66 @@ if zplug check "bhilburn/powerlevel9k"; then
     
     # Easily switch primary foreground/background colors
     #DEFAULT_FOREGROUND=038 DEFAULT_BACKGROUND=024 PROMPT_COLOR=038
+        
+    #_below__________________________________________________________
+        
+    # P9K_MODE="nerdfont-complete"
+    # P9K_LEFT_PROMPT_ELEMENTS=(custom_user dir vcs)
+    # P9K_RIGHT_PROMPT_ELEMENTS=(background_jobs docker_machine node_version go_version rbenv)
+    # ZSH_THEME="powerlevel9k/powerlevel9k"
+    # P9K_PROMPT_ON_NEWLINE=true
+    # P9K_RPROMPT_ON_NEWLINE=true
+    # P9K_MULTILINE_FIRST_PROMPT_PREFIX_ICON=$'%K{white}%k'
+    # P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON=$'%K{green}%F{black} \uf155 %f%F{green}%k\ue0b0 %f '
+    # P9K_LEFT_SEGMENT_SEPARATOR_ICON=$'\ue0b0'
+    # P9K_LEFT_SUBSEGMENT_SEPARATOR_ICON=$'\ue0b1'
+    # P9K_RIGHT_SEGMENT_SEPARATOR_ICON=$'\ue0b2'
+    # P9K_RIGHT_SUBSEGMENT_SEPARATOR_ICON=$'\ue0b7'
+    # P9K_DIR_HOME_BACKGROUND='black'
+    # P9K_DIR_HOME_FOREGROUND='white'
+    # P9K_DIR_HOME_SUBFOLDER_BACKGROUND='black'
+    # P9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
+    # P9K_DIR_DEFAULT_BACKGROUND='yellow'
+    # P9K_DIR_DEFAULT_FOREGROUND='black'
+    # P9K_DIR_SHORTEN_LENGTH=2
+    # P9K_DIR_SHORTEN_STRATEGY="truncate_from_right"
+    # P9K_OS_ICON_BACKGROUND='black'
+    # P9K_LINUX_ICON='%F{cyan} \uf303 %F{white} arch %F{cyan}linux%f'
+    # P9K_VCS_GIT_ICON=$'\uf1d2 '
+    # P9K_VCS_GIT_GITHUB_ICON=$'\uf113 '
+    # P9K_VCS_GIT_GITLAB_ICON=$'\uf296 '
+    # P9K_VCS_BRANCH_ICON=$''
+    # P9K_VCS_STAGED_ICON=$'\uf055'
+    # P9K_VCS_UNSTAGED_ICON=$'\uf421'
+    # P9K_VCS_UNTRACKED_ICON=$'\uf00d'
+    # P9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
+    # P9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
+    # P9K_VCS_MODIFIED_BACKGROUND='blue'
+    # P9K_VCS_MODIFIED_FOREGROUND='black'
+    # P9K_VCS_UNTRACKED_BACKGROUND='green'
+    # P9K_VCS_UNTRACKED_FOREGROUND='black'
+    # P9K_VCS_CLEAN_BACKGROUND='green'
+    # P9K_VCS_CLEAN_FOREGROUND='black'
+    # P9K_VCS_SHOW_CHANGESET=false
+    # P9K_STATUS_OK_ICON=$'\uf164'
+    # P9K_STATUS_ERROR_ICON=$'\uf165'
+    # P9K_STATUS_ERROR_CR_ICON=$'\uf165'
+    # P9K_BATTERY_LOW_FOREGROUND='red'
+    # P9K_BATTERY_CHARGING_FOREGROUND='blue'
+    # P9K_BATTERY_CHARGED_FOREGROUND='green'
+    # P9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
+    # P9K_BATTERY_VERBOSE=true
+    # P9K_RBENV_PROMPT_ALWAYS_SHOW=true
+    # P9K_GO_VERSION_PROMPT_ALWAYS_SHOW=true
+    # P9K_NODE_VERSION_BACKGROUND='green'
+    # P9K_NODE_VERSION_FOREGROUND='black'
+    # user_with_skull() {
+    #     echo -n "\ufb8a $(whoami)"
+    # }
+    # P9K_CUSTOM_USER="user_with_skull"
 
-    #________________________________________________________________
+    #_below__________________________________________________________
+    
  
     ZSH_THEME="powerlevel9k/powerlevel9k"
     POWERLEVEL9K_MODE="nerdfont-complete"
@@ -522,7 +579,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     #POWERLEVEL9K_VCS_GIT_ICON='\uF408 '
     #POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
 
-    #________________________________________________________________
+    #______below_______________________________________________________
     
     # DEFAULT_FOREGROUND=006 DEFAULT_BACKGROUND=235 PROMPT_COLOR=173
     # DEFAULT_FOREGROUND=198 DEFAULT_BACKGROUND=090 PROMPT_COLOR=173
