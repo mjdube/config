@@ -88,11 +88,6 @@ inoremap $e ""<esc>i
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Omni complete functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
@@ -458,10 +453,7 @@ iab  previosu  previous
 
 "=====[ Tab handling ]======================================
 
-set tabstop=4      "Tab indentation levels every four columns
 set shiftwidth=4   "Indent/outdent by four columns
-set expandtab      "Convert all tabs that are typed into spaces
-set shiftround     "Always indent/outdent to nearest tabstop
 set smarttab       "Use shiftwidths at left margin, tabstops everywhere else
 
 
@@ -501,15 +493,6 @@ imap     <silent> <C-\>  <C-O>:silent call VG_Show_CursorColumn('flip')<CR>
 
 
 "=====[ Search folding ]=====================
-
-" Don't start new buffers folded
-set foldlevelstart=99
-
-" Highlight folds
-highlight Folded  ctermfg=cyan ctermbg=black
-
-" Toggle on and off...
-nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 
 " Show only sub defns (and maybe comments)...
 let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
@@ -779,29 +762,29 @@ let &t_EI="\033[1 q" " end insert mode, back to square cursor
 
 "=====[ Completion during search (via Command window) ]======================
 
-function! s:search_mode_start()
-    cnoremap <tab> <c-f>:resize 1<CR>a<c-n>
-    let s:old_complete_opt = &completeopt
-    let s:old_last_status = &laststatus
-    set completeopt-=noinsert
-    set laststatus=0
-endfunction
+" function! s:search_mode_start()
+"     cnoremap <tab> <c-f>:resize 1<CR>a<c-n>
+"     let s:old_complete_opt = &completeopt
+"     let s:old_last_status = &laststatus
+"     set completeopt-=noinsert
+"     set laststatus=0
+" endfunction
 
-function! s:search_mode_stop()
-    try
-        silent cunmap <tab>
-    catch
-    finally
-        let &completeopt = s:old_complete_opt
-        let &laststatus  = s:old_last_status
-    endtry
-endfunction
+" function! s:search_mode_stop()
+"     try
+"         silent cunmap <tab>
+"     catch
+"     finally
+"         let &completeopt = s:old_complete_opt
+"         let &laststatus  = s:old_last_status
+"     endtry
+" endfunction
 
-augroup SearchCompletions
-    autocmd!
-    autocmd CmdlineEnter [/\?] call <SID>search_mode_start()
-    autocmd CmdlineLeave [/\?] call <SID>search_mode_stop()
-augroup END
+" augroup SearchCompletions
+"     autocmd!
+"     autocmd CmdlineEnter [/\?] call <SID>search_mode_start()
+"     autocmd CmdlineLeave [/\?] call <SID>search_mode_stop()
+" augroup END
 
 
 "=====[ Make multi-selection incremental search prettier ]======================

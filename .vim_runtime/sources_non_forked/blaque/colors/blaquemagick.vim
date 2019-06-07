@@ -32,7 +32,7 @@ hi NonText      term=NONE cterm=NONE ctermfg=8    ctermbg=NONE
 hi Normal       term=NONE cterm=NONE ctermfg=249  ctermbg=NONE
 hi PreProc      term=NONE cterm=NONE ctermfg=237   ctermbg=NONE
 hi Search       term=NONE cterm=NONE ctermfg=251  ctermbg=247
-hi Special      term=NONE cterm=NONE ctermfg=66   ctermbg=NONE
+hi Special      term=NONE cterm=NONE ctermfg=8   ctermbg=NONE
 hi SpecialKey   term=NONE cterm=NONE ctermfg=237  ctermbg=NONE
 hi Statement    term=NONE cterm=NONE ctermfg=139  ctermbg=NONE
 hi StatusLine   term=NONE cterm=NONE ctermfg=238  ctermbg=NONE

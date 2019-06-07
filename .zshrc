@@ -614,7 +614,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     P9K_MODE="nerdfont-complete"
     P9K_PROMPT_ON_NEWLINE=true
     P9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir_writable dir vcs)
-    P9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs time disk_usage ram)
+    P9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time ram)
     P9K_USER_ROOT_ICON="\uF09C"
     P9K_TIME_FORMAT="%D{%H:%M}"
     
