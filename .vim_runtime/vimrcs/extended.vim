@@ -322,50 +322,6 @@ set thesaurus+=~/Documents/thesaurus    "Add thesaurus file for ^X^T
 set dictionary+=~/Documents/dictionary  "Add dictionary file for ^X^K
 
 
-"====[ Simplify textfile backups ]============================================
-
-" Back up the current file
-"Nmap BB [Back up current file]  :!bak -q %<CR><CR>:echomsg "Backed up" expand('%')<CR>
-
-
-"=====[ Remap various keys to something more useful ]========================
-
-" Use space to jump down a page (like browsers do)...
-"nnoremap   <Space> <PageDown>
-"xnoremap   <Space> <PageDown>
-
-" Format file with autoformat (capitalize to specify options)...
-nmap          F  !Gformat -T4 -
-nmap <silent> f  !Gformat -T4<CR>
-nmap          ff r<CR>fgej
-
-xmap          F :!format -T4 -all -
-xmap <silent> f :!format -T4 -all<CR>
-
-" Install current file and swap to alternate file...
-"Nmap IP [Install current file and swap to alternate] :!install -f %<CR>
-
-
-" Add *** as **/* on command-line...
-"cmap *** **/*
-
-
-" " Take off and nuke the entire buffer contents from space
-" " (It's the only way to be sure)...
-" nnoremap <expr> XX ClearBuffer()
-
-" function! ClearBuffer ()
-"     if &filetype =~ 'perl'
-"         return "1Gj}dGA\<CR>\<CR>\<ESC>"
-"     else
-"         return '1GdG'
-"     endif
-" endfunction
-
-" Replace the current buffer with a copy of the most recent file...
-
-"nmap RR 1GdG:0r#<CR><C-G>
-
 " Insert cut marks...
 nmap -- A<CR><CR><CR><ESC>k6i-----cut-----<ESC><CR>
 
