@@ -424,7 +424,7 @@ highlight DiffText    cterm=bold ctermfg=magenta   ctermbg=black
 "=====[ Highlight cursor ]===================
 
 " Inverse highlighting for cursor...
-"highlight CursorInverse ctermfg=black ctermbg=white
+highlight CursorInverse ctermfg=black ctermbg=white
 
 " Set up highlighter at high priority (i.e. 99)
 call matchadd('CursorInverse', '\%#.', 99)
@@ -596,52 +596,45 @@ set linebreak
 "=====[ Automate syntax highlighting ]===============================
 
 " Keep long lines from slowing Vim too much
-set synmaxcol=200
+" set synmaxcol=200
+" augroup Autosyntax_actions
+"     autocmd!
+"     autocmd FileType netrw  syntax on
+"     autocmd BufEnter   *    call AS_Enter()
+"     autocmd BufLeave   *    syntax off
+" augroup END
+" command! -complete=filetype -nargs=+ Autosyntax call AS_set_active(<q-args>)
+" let g:AS_active_in = {}
+" function! AS_set_active(list)
+"     for ft in split(a:list, '\s\+')
+"         let g:AS_active_in[ft] = 1
+"         let g:AS_active_in['.'.ft] = 1
+"     endfor
+" endfunction
+" Autosyntax itn
+" Autosyntax pod6
+" Autosyntax todo
+" Autosyntax diff patch
 
-augroup Autosyntax_actions
-    autocmd!
-    autocmd FileType netrw  syntax on
-    autocmd BufEnter   *    call AS_Enter()
-    autocmd BufLeave   *    syntax off
-augroup END
-
-command! -complete=filetype -nargs=+ Autosyntax call AS_set_active(<q-args>)
-
-let g:AS_active_in = {}
-
-function! AS_set_active(list)
-    for ft in split(a:list, '\s\+')
-        let g:AS_active_in[ft] = 1
-        let g:AS_active_in['.'.ft] = 1
-    endfor
-endfunction
-
-Autosyntax itn
-Autosyntax pod6
-Autosyntax todo
-Autosyntax diff patch
-
-function! AS_Enter ()
-    let suffix = '.' . expand('<afile>:e')
-    if get(g:AS_active_in, &filetype, 0) || suffix != '.' && get(g:AS_active_in, suffix, 0)
-        syntax enable
-    endif
-endfunction
-
-nmap <silent> ;y   :call AS_toggle()<CR>
-
-function! AS_toggle ()
-    let suffix = '.' . expand('%:e')
-    if exists('g:syntax_on')
-        syntax off
-        let g:AS_active_in[&filetype] = 0
-        let g:AS_active_in[suffix]    = 0
-    else
-        syntax enable
-        let g:AS_active_in[&filetype] = 1
-        let g:AS_active_in[suffix]    = 1
-    endif
-endfunction
+" function! AS_Enter ()
+"     let suffix = '.' . expand('<afile>:e')
+"     if get(g:AS_active_in, &filetype, 0) || suffix != '.' && get(g:AS_active_in, suffix, 0)
+"         syntax enable
+"     endif
+" endfunction
+" nmap <silent> ;y   :call AS_toggle()<CR>
+" function! AS_toggle ()
+"     let suffix = '.' . expand('%:e')
+"     if exists('g:syntax_on')
+"         syntax off
+"         let g:AS_active_in[&filetype] = 0
+"         let g:AS_active_in[suffix]    = 0
+"     else
+"         syntax enable
+"         let g:AS_active_in[&filetype] = 1
+"         let g:AS_active_in[suffix]    = 1
+"     endif
+" endfunction
 
 
 "=====[ Let <UP> and <DOWN> iterate the quickfix buffer list too ]=========
