@@ -88,7 +88,6 @@ inoremap $e ""<esc>i
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
@@ -122,7 +121,6 @@ map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,7 +158,7 @@ endfunc
 
 "====[ Escape insert mode via 'jj' ]=============================
 
-imap jj <ESC>
+"imap jj <ESC>
 
 "====[ I'm sick of typing :%s/.../.../g ]=======
 
@@ -239,20 +237,20 @@ xmap ; :
 "=====[ Make Visual modes work better ]==================
 
 " Visual Block mode is far more useful that Visual mode (so swap the commands)...
-nnoremap v <C-V>
-nnoremap <C-V> v
+"nnoremap v <C-V>
+"nnoremap <C-V> v
 
-xnoremap v <C-V>
-xnoremap <C-V> v
+"xnoremap v <C-V>
+"xnoremap <C-V> v
 
 "Square up visual selections...
 set virtualedit=block
 
 " Make BS/DEL work as expected in visual modes (i.e. delete the selected text)...
-xmap <BS> x
+"xmap <BS> x
 
 " Make vaa select the entire file...
-xmap aa VGo1G
+"xmap aa VGo1G
 
 
 "=====[ Make arrow keys move visual blocks around ]======================
@@ -270,7 +268,7 @@ xmap <C-D>   <Plug>SchleppDupLeft
 "=====[ Configure % key (via matchit plugin) ]==============================
 
 " Match angle brackets...
-set matchpairs+=<:>,«:»,｢:｣
+"set matchpairs+=<:>,«:»,｢:｣
 
 "=====[ Miscellaneous features (mainly options) ]=====================
 
@@ -316,14 +314,11 @@ set updatecount=10                  "Save buffer every 10 chars typed
 set timeout timeoutlen=300 ttimeoutlen=300
 
 " "idleness" is 2 sec
-set updatetime=2000
-
-set thesaurus+=~/Documents/thesaurus    "Add thesaurus file for ^X^T
-set dictionary+=~/Documents/dictionary  "Add dictionary file for ^X^K
+set updatetime=10000
 
 
 " Insert cut marks...
-nmap -- A<CR><CR><CR><ESC>k6i-----cut-----<ESC><CR>
+"nmap -- A<CR><CR><CR><ESC>k6i-----cut-----<ESC><CR>
 
 
 " Indent/outdent current block...
@@ -333,7 +328,7 @@ nmap $$ $<i}``
 
 "=====[ Itinerary generation ]===========
 
-autocmd BufNewFile,BufRead  *.itn  nnoremap zd !!gen_itinerary_dates<CR>
+"autocmd BufNewFile,BufRead  *.itn  nnoremap zd !!gen_itinerary_dates<CR>
 
 
 "=====[ General programming support ]===================================
@@ -429,7 +424,7 @@ highlight DiffText    cterm=bold ctermfg=magenta   ctermbg=black
 "=====[ Highlight cursor ]===================
 
 " Inverse highlighting for cursor...
-highlight CursorInverse ctermfg=black ctermbg=white
+"highlight CursorInverse ctermfg=black ctermbg=white
 
 " Set up highlighter at high priority (i.e. 99)
 call matchadd('CursorInverse', '\%#.', 99)
@@ -438,35 +433,35 @@ call matchadd('CursorInverse', '\%#.', 99)
 "=====[ Highlight row and column on request ]===================
 
 " Toggle cursor row highlighting on request...
-highlight CursorLine   term=bold ctermbg=darkgrey ctermfg=yellow  cterm=bold
-nmap <silent> ;c :set cursorline!<CR>
+" highlight CursorLine   term=bold ctermbg=darkgrey ctermfg=yellow  cterm=bold
+" nmap <silent> ;c :set cursorline!<CR>
 
 " Toggle cursor column highlighting on request...
 " (via visualguide.vim plugin, so as to play nice)
-nmap     <silent> \  :silent call VG_Show_CursorColumn('flip')<CR>
-xnoremap <silent> \  :<C-W>silent call VG_Show_CursorColumn('flip')<CR>gv
-imap     <silent> <C-\>  <C-O>:silent call VG_Show_CursorColumn('flip')<CR>
+" nmap     <silent> \  :silent call VG_Show_CursorColumn('flip')<CR>
+" xnoremap <silent> \  :<C-W>silent call VG_Show_CursorColumn('flip')<CR>gv
+" imap     <silent> <C-\>  <C-O>:silent call VG_Show_CursorColumn('flip')<CR>
 
 
 "=====[ Search folding ]=====================
 
-" Show only sub defns (and maybe comments)...
-let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
-let vim_sub_pat  = '^\s*fu\%[nction!]\s\+\k\+'
-augroup FoldSub
-    autocmd!
-    autocmd BufEnter * nmap <silent> <expr>  zp  FS_FoldAroundTarget(perl_sub_pat,{'context':1})
-    autocmd BufEnter * nmap <silent> <expr>  za  FS_FoldAroundTarget(perl_sub_pat.'\zs\\|^\s*#.*',{'context':0, 'folds':'invisible'})
-    autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  zp  FS_FoldAroundTarget(vim_sub_pat,{'context':1})
-    autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
-    autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
-augroup END
+" " Show only sub defns (and maybe comments)...
+" let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
+" let vim_sub_pat  = '^\s*fu\%[nction!]\s\+\k\+'
+" augroup FoldSub
+"     autocmd!
+"     autocmd BufEnter * nmap <silent> <expr>  zp  FS_FoldAroundTarget(perl_sub_pat,{'context':1})
+"     autocmd BufEnter * nmap <silent> <expr>  za  FS_FoldAroundTarget(perl_sub_pat.'\zs\\|^\s*#.*',{'context':0, 'folds':'invisible'})
+"     autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  zp  FS_FoldAroundTarget(vim_sub_pat,{'context':1})
+"     autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
+"     autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
+" augroup END
 
 " Show only 'use' statements
-nmap <silent> <expr>  zu  FS_FoldAroundTarget('\(^\s*\(use\\|no\)\s\+\S.*;\\|\<require\>\s\+\S\+\)',{'context':1})
+" nmap <silent> <expr>  zu  FS_FoldAroundTarget('\(^\s*\(use\\|no\)\s\+\S.*;\\|\<require\>\s\+\S\+\)',{'context':1})
 
 
-"====[ Show when lines extend past column 80 ]=================================>!<============
+" ====[ Show when lines extend past column 80 ]=================================>!<============
 
 highlight ColorColumn ctermfg=208 ctermbg=Black
 
@@ -651,7 +646,7 @@ endfunction
 
 "=====[ Let <UP> and <DOWN> iterate the quickfix buffer list too ]=========
 
-let g:ArrNav_arglist_fallback = 1
+" let g:ArrNav_arglist_fallback = 1
 
 
 
@@ -661,48 +656,6 @@ xnoremap <expr>  G   'G' . virtcol('.') . "\|"
 xnoremap <expr>  }   '}' . virtcol('.') . "\|"
 xnoremap <expr>  {   '{' . virtcol('.') . "\|"
 
-
-"=====[ Configure ALE ]==================
-" Install the following:
-"     https://github.com/w0rp/ale
-"     https://github.com/jceb/vim-hier
-
-highlight AleError    ctermfg=red     cterm=bold
-highlight AleWarning  ctermfg=magenta cterm=bold
-
-augroup ALE_Autoconfig
-    au!
-    autocmd User GVI_Start  silent call Stop_ALE()
-    autocmd User PV_Start   silent call Stop_ALE()
-    autocmd User PV_End     silent call Start_ALE()
-    autocmd User ALELint    silent HierUpdate
-augroup END
-
-let g:ale_set_loclist          = 0
-let g:ale_set_quickfix         = 1
-let g:ale_set_signs            = 0
-
-function! Start_ALE ()
-    ALEEnable
-    HierStart
-endfunction
-
-function! Stop_ALE ()
-    silent call s:ChangeProfile(&filetype)
-    ALEDisable
-    HierStop
-    call setqflist([])
-    redraw!
-endfunction
-
-function! Toggle_ALE ()
-    if g:ale_enabled
-        call Stop_ALE()
-    else
-        call Start_ALE()
-    endif
-    echo 'Error highlighting ' . (g:ale_enabled ? 'on' : 'off')
-endfunction
 
 
 "=====[ Select a completion from the menu without inserting a <CR> ]========
