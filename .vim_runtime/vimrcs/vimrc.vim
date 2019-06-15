@@ -1,3 +1,291 @@
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Customs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+ab mail tcajee@student.wethinkcode.co.za
+ab lft #include "libft.h"
+noremap <F2> :Stdheader<cr>6Gf<ci<tcajee@student.wethinkcode.co.za<right><space><ESC>21x
+ab zfs //---<>---------------------------------------------------------------{{{<cr><cr><cr>}}}<up><up>
+ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
+
+
+" Set Colorscheme
+" colorscheme desert
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=500
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=50
+
+" Turn on the Wild menu
+set wildmenu
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
+" Height of the command bar
+set cmdheight=2
+
+" A buffer becomes hidden when it is abandoned
+set hid
+
+" Configure backspace so it acts as it should act
+set whichwrap+=<,>,h,l
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases 
+set smartcase
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regular expressions turn magic on
+set magic
+
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=10
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" Properly disable sound on errors on MacVim
+if has("gui_macvim")
+    autocmd GUIEnter * set vb t_vb=
+endif
+
+" Add a bit extra margin to the left
+set foldcolumn=1
+
+set foldmethod=marker
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable
+
+" " Enable 256 colors palette in Gnome Terminal
+" if $COLORTERM == 'gnome-terminal'
+"     set t_Co=256
+" endif
+" try
+"     colorscheme desert
+" catch
+" endtry
+
+" Set background
+set background=dark
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Specify the behavior when switching between buffers 
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" f9 to open NerdTree
+nmap <F6> :NERDTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction 
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -19,10 +307,6 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-
-" Colorscheme
-set background=dark
-colorscheme blaquemagick
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -46,7 +330,7 @@ cno $j e ./
 cno $c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
-" it deletes everything until the last slash 
+" it deletes everything until the last slash
 cno $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
@@ -89,41 +373,6 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack searching and cope displaying
-"    requires ack.vim - it's much better than vimgrep/grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use the the_silver_searcher if possible (much faster than Ack)
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
-endif
-
-" When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ack and put the cursor in the right position
-map <leader>g :Ack 
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! DeleteTillSlash()
@@ -151,14 +400,9 @@ func! CurrentFileDir(cmd)
 endfunc
 
 
-"=====[ Comments are important ]==================
-
-"highlight Comment term=bold ctermfg=white
-
-
 "====[ Escape insert mode via 'jj' ]=============================
 
-"imap jj <ESC>
+imap jj <ESC>
 
 "====[ I'm sick of typing :%s/.../.../g ]=======
 
@@ -198,12 +442,12 @@ highlight    IncSearch    ctermfg=White  ctermbg=Red    cterm=bold
 " No smartwrapping in any of these files...
 "let g:SW_IGNORE_FILES = '.vimrc,*.vim,*.pl,*.pm,**/bin/**'
 
-" set comments-=s1:/*,mb:*,ex:*/      "Don't recognize C comments
-" set comments-=:XCOMM                "Don't recognize lmake comments
-" set comments-=:%                    "Don't recognize PostScript comments
-" set comments-=:#                    "Don't recognize Perl/shell comments
-" set comments+=fb:*                  "Star-space is a bullet
-" set comments+=fb:-                  "Dash-space is a bullets
+set comments-=s1:/*,mb:*,ex:*/      "Don't recognize C comments
+set comments-=:XCOMM                "Don't recognize lmake comments
+set comments-=:%                    "Don't recognize PostScript comments
+set comments-=:#                    "Don't recognize Perl/shell comments
+set comments+=fb:*                  "Star-space is a bullet
+set comments+=fb:-                  "Dash-space is a bullets
 
 set formatoptions-=cro
 
@@ -264,12 +508,6 @@ xmap D       <Plug>SchleppDupLeft
 xmap <C-D>   <Plug>SchleppDupLeft
 
 
-
-"=====[ Configure % key (via matchit plugin) ]==============================
-
-" Match angle brackets...
-"set matchpairs+=<:>,«:»,｢:｣
-
 "=====[ Miscellaneous features (mainly options) ]=====================
 
 set title           "Show filename in titlebar of window
@@ -316,19 +554,9 @@ set timeout timeoutlen=300 ttimeoutlen=300
 " "idleness" is 2 sec
 set updatetime=10000
 
-
-" Insert cut marks...
-"nmap -- A<CR><CR><CR><ESC>k6i-----cut-----<ESC><CR>
-
-
 " Indent/outdent current block...
 nmap %% $>i}``
 nmap $$ $<i}``
-
-
-"=====[ Itinerary generation ]===========
-
-"autocmd BufNewFile,BufRead  *.itn  nnoremap zd !!gen_itinerary_dates<CR>
 
 
 "=====[ General programming support ]===================================
@@ -407,7 +635,6 @@ iab  previosu  previous
 set shiftwidth=4   "Indent/outdent by four columns
 set smarttab       "Use shiftwidths at left margin, tabstops everywhere else
 
-
 " Make the completion popup look menu-ish on a Mac...
 highlight  Pmenu        ctermbg=white   ctermfg=black
 highlight  PmenuSel     ctermbg=blue    ctermfg=white   cterm=bold
@@ -428,37 +655,6 @@ highlight CursorInverse ctermfg=black ctermbg=white
 
 " Set up highlighter at high priority (i.e. 99)
 call matchadd('CursorInverse', '\%#.', 99)
-
-
-"=====[ Highlight row and column on request ]===================
-
-" Toggle cursor row highlighting on request...
-" highlight CursorLine   term=bold ctermbg=darkgrey ctermfg=yellow  cterm=bold
-" nmap <silent> ;c :set cursorline!<CR>
-
-" Toggle cursor column highlighting on request...
-" (via visualguide.vim plugin, so as to play nice)
-" nmap     <silent> \  :silent call VG_Show_CursorColumn('flip')<CR>
-" xnoremap <silent> \  :<C-W>silent call VG_Show_CursorColumn('flip')<CR>gv
-" imap     <silent> <C-\>  <C-O>:silent call VG_Show_CursorColumn('flip')<CR>
-
-
-"=====[ Search folding ]=====================
-
-" " Show only sub defns (and maybe comments)...
-" let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
-" let vim_sub_pat  = '^\s*fu\%[nction!]\s\+\k\+'
-" augroup FoldSub
-"     autocmd!
-"     autocmd BufEnter * nmap <silent> <expr>  zp  FS_FoldAroundTarget(perl_sub_pat,{'context':1})
-"     autocmd BufEnter * nmap <silent> <expr>  za  FS_FoldAroundTarget(perl_sub_pat.'\zs\\|^\s*#.*',{'context':0, 'folds':'invisible'})
-"     autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  zp  FS_FoldAroundTarget(vim_sub_pat,{'context':1})
-"     autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
-"     autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
-" augroup END
-
-" Show only 'use' statements
-" nmap <silent> <expr>  zu  FS_FoldAroundTarget('\(^\s*\(use\\|no\)\s\+\S.*;\\|\<require\>\s\+\S\+\)',{'context':1})
 
 
 " ====[ Show when lines extend past column 80 ]=================================>!<============
@@ -593,62 +789,11 @@ set breakindent
 set linebreak
 
 
-"=====[ Automate syntax highlighting ]===============================
-
-" Keep long lines from slowing Vim too much
-" set synmaxcol=200
-" augroup Autosyntax_actions
-"     autocmd!
-"     autocmd FileType netrw  syntax on
-"     autocmd BufEnter   *    call AS_Enter()
-"     autocmd BufLeave   *    syntax off
-" augroup END
-" command! -complete=filetype -nargs=+ Autosyntax call AS_set_active(<q-args>)
-" let g:AS_active_in = {}
-" function! AS_set_active(list)
-"     for ft in split(a:list, '\s\+')
-"         let g:AS_active_in[ft] = 1
-"         let g:AS_active_in['.'.ft] = 1
-"     endfor
-" endfunction
-" Autosyntax itn
-" Autosyntax pod6
-" Autosyntax todo
-" Autosyntax diff patch
-
-" function! AS_Enter ()
-"     let suffix = '.' . expand('<afile>:e')
-"     if get(g:AS_active_in, &filetype, 0) || suffix != '.' && get(g:AS_active_in, suffix, 0)
-"         syntax enable
-"     endif
-" endfunction
-" nmap <silent> ;y   :call AS_toggle()<CR>
-" function! AS_toggle ()
-"     let suffix = '.' . expand('%:e')
-"     if exists('g:syntax_on')
-"         syntax off
-"         let g:AS_active_in[&filetype] = 0
-"         let g:AS_active_in[suffix]    = 0
-"     else
-"         syntax enable
-"         let g:AS_active_in[&filetype] = 1
-"         let g:AS_active_in[suffix]    = 1
-"     endif
-" endfunction
-
-
-"=====[ Let <UP> and <DOWN> iterate the quickfix buffer list too ]=========
-
-" let g:ArrNav_arglist_fallback = 1
-
-
-
 "=====[ Make jump-selections work better in visual block mode ]=================
 
 xnoremap <expr>  G   'G' . virtcol('.') . "\|"
 xnoremap <expr>  }   '}' . virtcol('.') . "\|"
 xnoremap <expr>  {   '{' . virtcol('.') . "\|"
-
 
 
 "=====[ Select a completion from the menu without inserting a <CR> ]========
@@ -664,29 +809,29 @@ let &t_EI="\033[1 q" " end insert mode, back to square cursor
 
 "=====[ Completion during search (via Command window) ]======================
 
-" function! s:search_mode_start()
-"     cnoremap <tab> <c-f>:resize 1<CR>a<c-n>
-"     let s:old_complete_opt = &completeopt
-"     let s:old_last_status = &laststatus
-"     set completeopt-=noinsert
-"     set laststatus=0
-" endfunction
+function! s:search_mode_start()
+    cnoremap <tab> <c-f>:resize 1<CR>a<c-n>
+    let s:old_complete_opt = &completeopt
+    let s:old_last_status = &laststatus
+    set completeopt-=noinsert
+    set laststatus=0
+endfunction
 
-" function! s:search_mode_stop()
-"     try
-"         silent cunmap <tab>
-"     catch
-"     finally
-"         let &completeopt = s:old_complete_opt
-"         let &laststatus  = s:old_last_status
-"     endtry
-" endfunction
+function! s:search_mode_stop()
+    try
+        silent cunmap <tab>
+    catch
+    finally
+        let &completeopt = s:old_complete_opt
+        let &laststatus  = s:old_last_status
+    endtry
+endfunction
 
-" augroup SearchCompletions
-"     autocmd!
-"     autocmd CmdlineEnter [/\?] call <SID>search_mode_start()
-"     autocmd CmdlineLeave [/\?] call <SID>search_mode_stop()
-" augroup END
+augroup SearchCompletions
+    autocmd!
+    autocmd CmdlineEnter [/\?] call <SID>search_mode_start()
+    autocmd CmdlineLeave [/\?] call <SID>search_mode_stop()
+augroup END
 
 
 "=====[ Make multi-selection incremental search prettier ]======================
