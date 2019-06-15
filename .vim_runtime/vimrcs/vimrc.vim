@@ -11,7 +11,7 @@ ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
 
 
 " Set Colorscheme
-" colorscheme desert
+" colorscheme blaquemagick
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
