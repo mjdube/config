@@ -9,9 +9,9 @@ noremap <F2> :Stdheader<cr>6Gf<ci<tcajee@student.wethinkcode.co.za<right><space>
 ab zfs //---<>---------------------------------------------------------------{{{<cr><cr><cr>}}}<up><up>
 ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
 
+" remove trailing spaces
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
 
-" Set Colorscheme
-" colorscheme blaquemagick
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -103,6 +103,16 @@ set foldmethod=marker
 " Enable syntax highlighting
 syntax enable
 
+" Set background
+set background=dark
+colorscheme desert
+
+" " Enable colors
+" if (has("termguicolors"))
+"   set termguicolors
+"  endif
+"  colo desert
+
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
@@ -112,8 +122,6 @@ try
 catch
 endtry
 
-" Set background
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
