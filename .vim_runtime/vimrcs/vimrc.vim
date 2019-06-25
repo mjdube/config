@@ -12,6 +12,19 @@ ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
 " remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
 
+ab vc ----------
+ab hc \+<cr>\|<cr>\|<cr>v
+
+
+"=====[ Make arrow keys move visual blocks around ]======================
+
+xmap <up>    <Plug>SchleppIndentUp
+xmap <down>  <Plug>SchleppIndentDown
+xmap <left>  <Plug>SchleppLeft
+xmap <right> <Plug>SchleppRight
+xmap D       <Plug>SchleppDupLeft
+xmap <C-D>   <Plug>SchleppDupLeft
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -276,22 +289,19 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction 
 
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
+"  function! VisualSelection(direction, extra_filter) range
+"      let l:saved_reg = @"
+"      execute "normal! vgvy"
+"     let l:pattern = escape(@", "\\/.*'$^~[]")
+"     let l:pattern = substitute(l:pattern, "\n$", "", "")
+"     if a:direction == 'gv'
+"         call CmdLine("Ack '" . l:pattern . "' " )
+"     elseif a:direction == 'replace'
+"         call CmdLine("%s" . '/'. l:pattern . '/')
+"     endif
+"     let @/ = l:pattern
+"     let @" = l:saved_reg
+" endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -345,9 +355,6 @@ cno $q <C-\>eDeleteTillSlash()<cr>
 cnoremap <C-A>		<Home>
 cnoremap <C-E>		<End>
 cnoremap <C-K>		<C-U>
-
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
 
 " Map ½ to something useful
 map ½ $
@@ -496,7 +503,7 @@ xmap ; :
 "xnoremap <C-V> v
 
 "Square up visual selections...
-set virtualedit=block
+" set virtualedit=block
 
 " Make BS/DEL work as expected in visual modes (i.e. delete the selected text)...
 "xmap <BS> x
@@ -504,16 +511,6 @@ set virtualedit=block
 " Make vaa select the entire file...
 "xmap aa VGo1G
 
-
-"=====[ Make arrow keys move visual blocks around ]======================
-
-xmap <up>    <Plug>SchleppUp
-xmap <down>  <Plug>SchleppDown
-xmap <left>  <Plug>SchleppLeft
-xmap <right> <Plug>SchleppRight
-
-xmap D       <Plug>SchleppDupLeft
-xmap <C-D>   <Plug>SchleppDupLeft
 
 
 "=====[ Miscellaneous features (mainly options) ]=====================
@@ -817,29 +814,27 @@ let &t_EI="\033[1 q" " end insert mode, back to square cursor
 
 "=====[ Completion during search (via Command window) ]======================
 
-function! s:search_mode_start()
-    cnoremap <tab> <c-f>:resize 1<CR>a<c-n>
-    let s:old_complete_opt = &completeopt
-    let s:old_last_status = &laststatus
-    set completeopt-=noinsert
-    set laststatus=0
-endfunction
-
-function! s:search_mode_stop()
-    try
-        silent cunmap <tab>
-    catch
-    finally
-        let &completeopt = s:old_complete_opt
-        let &laststatus  = s:old_last_status
-    endtry
-endfunction
-
-augroup SearchCompletions
-    autocmd!
-    autocmd CmdlineEnter [/\?] call <SID>search_mode_start()
-    autocmd CmdlineLeave [/\?] call <SID>search_mode_stop()
-augroup END
+" function! s:search_mode_start()
+"     cnoremap <tab> <c-f>:resize 1<CR>a<c-n>
+"     let s:old_complete_opt = &completeopt
+"     let s:old_last_status = &laststatus
+"     set completeopt-=noinsert
+"     set laststatus=0
+" endfunction
+" function! s:search_mode_stop()
+"     try
+"         silent cunmap <tab>
+"     catch
+"     finally
+"         let &completeopt = s:old_complete_opt
+"         let &laststatus  = s:old_last_status
+"     endtry
+" endfunction
+" augroup SearchCompletions
+"     autocmd!
+"     autocmd CmdlineEnter [/\?] call <SID>search_mode_start()
+"     autocmd CmdlineLeave [/\?] call <SID>search_mode_stop()
+" augroup END
 
 
 "=====[ Make multi-selection incremental search prettier ]======================
