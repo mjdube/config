@@ -412,16 +412,16 @@ if zplug check "zsh-users/zsh-syntax-highlighting"; then
 
     ZSH_HIGHLIGHT_STYLES[default]='none'
     ZSH_HIGHLIGHT_STYLES[cursor]='fg=yellow'
-    ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+    ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=grey'
     ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=yellow'
     ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
-    ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan'
-    ZSH_HIGHLIGHT_STYLES[function]='fg=cyan'
-    ZSH_HIGHLIGHT_STYLES[command]='fg=cyan'
+    ZSH_HIGHLIGHT_STYLES[builtin]='fg=green'
+    ZSH_HIGHLIGHT_STYLES[function]='fg=green'
+    ZSH_HIGHLIGHT_STYLES[command]='fg=green'
     ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
     ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow'
     ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green'
-    ZSH_HIGHLIGHT_STYLES[path]='fg=white,underline'
+    ZSH_HIGHLIGHT_STYLES[path]='fg=grey'
     ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=grey,underline'
     ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=white'
     ZSH_HIGHLIGHT_STYLES[path_approx]='fg=white'
@@ -448,7 +448,7 @@ fi
 
 if zplug check "zsh-users/zsh-autosuggestions"; then
     #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=075'
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=179'
     #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=162'
 fi
 
@@ -627,7 +627,7 @@ if zplug check "bhilburn/powerlevel9k"; then
 
     #______below_______________________________________________________
     
-    DEFAULT_FOREGROUND=8 DEFAULT_BACKGROUND=237 PROMPT_COLOR=240
+    DEFAULT_FOREGROUND=8 DEFAULT_BACKGROUND=237 PROMPT_COLOR=8
     DEFAULT_COLOR="clear"
     P9K_STATUS_VERBOSE=true
     P9K_DIR_SHORTEN_LENGTH=1
@@ -653,7 +653,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     P9K_VCS_CLEAN_BACKGROUND="$DEFAULT_BACKGROUND"
     P9K_VCS_MODIFIED_BACKGROUND="$DEFAULT_BACKGROUND"
     P9K_VCS_UNTRACKED_BACKGROUND="$DEFAULT_BACKGROUND"
-    P9K_VCS_CLEAN_FOREGROUND="28"
+    P9K_VCS_CLEAN_FOREGROUND="108"
     P9K_VCS_MODIFIED_FOREGROUND="011"
     P9K_VCS_UNTRACKED_FOREGROUND="011"
     P9K_DIR_HOME_BACKGROUND="$DEFAULT_BACKGROUND"
@@ -732,7 +732,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     #P9K_LEFT_SEGMENT_SEPARATOR_ICON="%F{$DEFAULT_BACKGROUND}\uE0BC%f"
     #P9K_RIGHT_SEGMENT_SEPARATOR_ICON="%F{$DEFAULT_BACKGROUND}\uE0BA%f"
     #P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⇢ ➜  %f"
-    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR} ┄⇢  %f"
+    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⥂⎇⎇⥱  %f"
     # P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs)
     # P9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time ssh)
     #P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir_joined vcs)
