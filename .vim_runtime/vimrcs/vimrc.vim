@@ -638,7 +638,6 @@ iab  previosu  previous
 "=====[ Tab handling ]======================================
 
 set shiftwidth=4   "Indent/outdent by four columns
-set tabstop=4   "Indent/outdent by four columns
 set smarttab       "Use shiftwidths at left margin, tabstops everywhere else
 
 " Make the completion popup look menu-ish on a Mac...
