@@ -9,6 +9,7 @@ noremap <F2> :Stdheader<cr>6Gf<ci<tcajee@student.wethinkcode.co.za<right><space>
 ab zfs //---<>---------------------------------------------------------------{{{<cr><cr><cr>}}}<up><up>
 ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
 
+
 " remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
 
@@ -45,7 +46,7 @@ let mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-
+nmap <cr><cr> :!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -639,7 +640,7 @@ iab  previosu  previous
 
 set shiftwidth=4   "Indent/outdent by four columns
 set tabstop=4
-set smarttab       "Use shiftwidths at left margin, tabstops everywhere else
+" set smarttab       "Use shiftwidths at left margin, tabstops everywhere else
 
 " Make the completion popup look menu-ish on a Mac...
 highlight  Pmenu        ctermbg=white   ctermfg=black
