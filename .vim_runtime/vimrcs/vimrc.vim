@@ -7,10 +7,19 @@ ab mail tcajee@student.wethinkcode.co.za
 ab lft #include "libft.h"
 noremap <F2> :Stdheader<cr>6Gf<ci<tcajee@student.wethinkcode.co.za<right><space><ESC>21x
 
-ab zfs //---<>---------------------------------------------------------------{{{<cr><up><esc>f<ci< <esc>R
+ab zfs {{{<ESC>gccf}iTITLE<cr><cr><cr><cr><up><up><tab>
+
+" }}} 
+
+" {{{TITLE
+"
+" 
+"
 " }}}
 
+
 ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
+
 
 " remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
