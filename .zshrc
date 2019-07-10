@@ -146,6 +146,7 @@ REPORTTIME=5          # Display usage statistics for commands running > 5 sec.
 # Key timeout and character sequences
 KEYTIMEOUT=2
 WORDCHARS='*?_-[]~=./&;!#$%^(){}<>'
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 # =============================================================================
 #                                Key Bindings
