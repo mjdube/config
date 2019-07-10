@@ -99,7 +99,7 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github, at:next,
 
 # zplug "hlissner/zsh-autopair", defer:2
 zplug "zsh-users/zsh-completions"
-# zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-autosuggestions"
 # zsh-syntax-highlighting must be loaded after executing compinit command
 # and sourcing other plugins
 # zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -218,10 +218,10 @@ fi
 #     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor line)
 # fi
 
-# if zplug check "zsh-users/zsh-autosuggestions"; then
-    #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=179'
-    #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=162'
+if zplug check "zsh-users/zsh-autosuggestions"; then
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=179'
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=162'
 fi
 
 if zplug check "bhilburn/powerlevel9k"; then
