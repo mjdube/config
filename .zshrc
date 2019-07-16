@@ -331,7 +331,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     #P9K_LEFT_SEGMENT_SEPARATOR_ICON="%F{$DEFAULT_BACKGROUND}\uE0BC%f"
     #P9K_RIGHT_SEGMENT_SEPARATOR_ICON="%F{$DEFAULT_BACKGROUND}\uE0BA%f"
     #P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⇢ ➜  %f"
-    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⥂⎇⎇⥱  %f"
+    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⥂⎇ ⎇  %f"
     # P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs)
     # P9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time ssh)
     #P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir_joined vcs)
