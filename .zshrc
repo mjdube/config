@@ -219,7 +219,7 @@ fi
 # fi
 
 if zplug check "zsh-users/zsh-autosuggestions"; then
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=133'
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#3a634b'
     # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=88'
     # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=172'
 fi
@@ -236,11 +236,12 @@ if zplug check "bhilburn/powerlevel9k"; then
     P9K_LEFT_SUBSEGMENT_SEPARATOR_ICON="%F{232}\uE0BD%f "
     P9K_RIGHT_SUBSEGMENT_SEPARATOR_ICON="%F{232}\uE0BD%f "
     P9K_PROMPT_ON_NEWLINE=true
-    P9K_RPROMPT_ON_NEWLINE=true
+    P9K_RPROMPT_ON_NEWLINE=false
     P9K_STATUS_VERBOSE=true
     P9K_STATUS_CROSS=true
     P9K_PROMPT_ADD_NEWLINE=true
     P9K_MULTILINE_FIRST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}%f"
+    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⥂⎇ ⎇  %f"
     # P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}➜ %f"
     P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable)
     P9K_RIGHT_PROMPT_ELEMENTS=(vcs)
@@ -331,7 +332,6 @@ if zplug check "bhilburn/powerlevel9k"; then
     #P9K_LEFT_SEGMENT_SEPARATOR_ICON="%F{$DEFAULT_BACKGROUND}\uE0BC%f"
     #P9K_RIGHT_SEGMENT_SEPARATOR_ICON="%F{$DEFAULT_BACKGROUND}\uE0BA%f"
     #P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⇢ ➜  %f"
-    P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}⥂⎇ ⎇  %f"
     # P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs)
     # P9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time ssh)
     #P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir_joined vcs)
