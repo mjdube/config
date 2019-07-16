@@ -219,9 +219,9 @@ fi
 # fi
 
 if zplug check "zsh-users/zsh-autosuggestions"; then
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=88'
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=88'
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=88'
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=133'
+    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=88'
+    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=172'
 fi
 
 if zplug check "bhilburn/powerlevel9k"; then
@@ -236,14 +236,14 @@ if zplug check "bhilburn/powerlevel9k"; then
     P9K_LEFT_SUBSEGMENT_SEPARATOR_ICON="%F{232}\uE0BD%f "
     P9K_RIGHT_SUBSEGMENT_SEPARATOR_ICON="%F{232}\uE0BD%f "
     P9K_PROMPT_ON_NEWLINE=true
-    P9K_RPROMPT_ON_NEWLINE=false
+    P9K_RPROMPT_ON_NEWLINE=true
     P9K_STATUS_VERBOSE=true
     P9K_STATUS_CROSS=true
     P9K_PROMPT_ADD_NEWLINE=true
     P9K_MULTILINE_FIRST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}%f"
     # P9K_MULTILINE_LAST_PROMPT_PREFIX_ICON="%F{$PROMPT_COLOR}➜ %f"
-    P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable vcs)
-    P9K_RIGHT_PROMPT_ELEMENTS=()
+    P9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable)
+    P9K_RIGHT_PROMPT_ELEMENTS=(vcs)
     P9K_MODE='nerdfont-complete'
     P9K_VCS_GIT_GITHUB_ICON=""
     P9K_VCS_GIT_BITBUCKET_ICON=""
