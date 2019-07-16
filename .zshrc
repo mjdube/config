@@ -35,11 +35,13 @@ export MANPAGER='less -s -M -R +Gg'
 
 # Directory coloring
 if [[ $OSTYPE = (darwin|freebsd)* ]]; then
-    #export CLICOLOR="YES" # Equivalent to passing -G to ls.
-    #export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
-    #export LS_OPTIONS='-G'
+#------------------------------------------------------------->#
+	export CLICOLOR="YES" # Equivalent to passing -G to ls.
+    export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
+    export LS_OPTIONS='-G'
     export CLICOLOR=true
-    export LSCOLORS='exfxcxdxbxGxDxabagacad'
+    export LSCOLORS='exfxcxdxbxGxDxabagacad'#
+#------------------------------------------------------------->#
 
     #[ -d "/opt/local/bin" ] && export PATH="/opt/local/bin:$PATH"
 
@@ -59,7 +61,7 @@ fi
 alias rm="rm -v"
 alias cp="cp -v"
 alias mv="mv -v"
-alias ls="ls $LS_OPTIONS -hFtr"
+alias ls="clear && ls $LS_OPTIONS -hFtr"
 alias ll="ls $LS_OPTIONS -lAhFtr"
 alias ccat="pygmentize -O style=monokai -f 256 -g"
 alias dig="dig +nocmd any +multiline +noall +answer"
