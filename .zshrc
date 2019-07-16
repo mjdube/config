@@ -34,8 +34,10 @@ export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 export MANPAGER='less -s -M -R +Gg'
 
 # Directory coloring
-if [[ $OSTYPE = (darwin|freebsd)* ]]; then
+
 #------------------------------------------------------------->#
+
+if [[ $OSTYPE = (darwin|freebsd)* ]]; then
 	export CLICOLOR="YES" # Equivalent to passing -G to ls.
     export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
     export LS_OPTIONS='-G'
@@ -56,6 +58,7 @@ fi
 
 #------------------------------------------------------------->#
 # Common aliases
+alias rm="clear && "
 alias rm="rm -v"
 alias cp="cp -v"
 alias mv="mv -v"
@@ -235,8 +238,8 @@ if zplug check "bhilburn/powerlevel9k"; then
     P9K_CONTEXT_ALWAYS_SHOW_USER=true
     P9K_LEFT_SUBSEGMENT_SEPARATOR_ICON="%F{232}\uE0BD%f "
     P9K_RIGHT_SUBSEGMENT_SEPARATOR_ICON="%F{232}\uE0BD%f "
-    P9K_PROMPT_ON_NEWLINE=true
-    P9K_RPROMPT_ON_NEWLINE=false
+    P9K_PROMPT_ON_NEWLINE=false
+    P9K_RPROMPT_ON_NEWLINE=true
     P9K_STATUS_VERBOSE=true
     P9K_STATUS_CROSS=true
     P9K_PROMPT_ADD_NEWLINE=true
