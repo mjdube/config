@@ -44,7 +44,7 @@ if [[ $OSTYPE = (darwin|freebsd)* ]]; then
     export CLICOLOR=true
     export LSCOLORS='exfxcxdxbxGxDxabagacad'#
    [ -d "/opt/local/bin" ] && export PATH="/opt/local/bin:$PATH"
-    Prefer GNU version, since it respects dircolors.
+    # Prefer GNU version, since it respects dircolors.
    if (( $+commands[gls] )); then
       alias ls='() { $(whence -p gls) -Ctr --file-type --color=auto $@ }'
    else
