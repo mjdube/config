@@ -23,6 +23,11 @@ configure: fclean
 reload: clean
 	sh $(RELOAD)
 
+fonts:
+	touch ~/.fonts
+	cp nerdfontss/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf ~/.fonts
+
+
 clean:
 	rm -rf ~/.vim_runtime ~/.vimrc ~/.bashrc ~/.zshrc
 
