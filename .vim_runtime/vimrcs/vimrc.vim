@@ -9,24 +9,18 @@ noremap <F2> :Stdheader<cr>6Gf<ci<tcajee@student.wethinkcode.co.za<right><space>
 
 ab zfs {{{<ESC>gccf}iTITLE<cr><cr><cr><cr><up><up><tab>
 
-" }}} 
+"}}}
 
-" {{{TITLE
-"
-" 
-"
-" }}}
+
 
 
 ab ftest !gcc main.c -L. -lft -Wall -Werror -Wextra -o ft_test
 
-
 " remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar> :let @/=_s<Bar><CR>
 
-ab vc ----------
-ab hc \+<cr>\|<cr>\|<cr>v
-
+ab hc ----------
+ab vc \+<cr>\|<cr>\|<cr>v
 
 "=====[ Make arrow keys move visual blocks around ]======================
 
@@ -34,8 +28,6 @@ xmap <up>    <Plug>SchleppIndentUp
 xmap <down>  <Plug>SchleppIndentDown
 xmap <left>  <Plug>SchleppLeft
 xmap <right> <Plug>SchleppRight
-xmap D       <Plug>SchleppDupLeft
-xmap <C-D>   <Plug>SchleppDupLeft
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,6 +60,8 @@ set so=50
 " Turn on the Wild menu
 set wildmenu
 
+
+
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
@@ -77,7 +71,7 @@ else
 endif
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -102,6 +96,7 @@ set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=10
 
@@ -176,15 +171,6 @@ set lbr
 set tw=500
 
 
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,9 +232,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+" Format the status line
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -301,9 +287,9 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction 
 
-"  function! VisualSelection(direction, extra_filter) range
-"      let l:saved_reg = @"
-"      execute "normal! vgvy"
+" function! VisualSelection(direction, extra_filter) range
+"     let l:saved_reg = @"
+"     execute "normal! vgvy"
 "     let l:pattern = escape(@", "\\/.*'$^~[]")
 "     let l:pattern = substitute(l:pattern, "\n$", "", "")
 "     if a:direction == 'gv'
@@ -351,30 +337,6 @@ endtry
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command mode related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smart mappings on the command line
-cno $h e ~/
-cno $d e ~/Desktop/
-cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
-
-" $q is super useful when browsing on the command line
-" it deletes everything until the last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
-
-" Bash like keys for the command line
-cnoremap <C-A>		<Home>
-cnoremap <C-E>		<End>
-cnoremap <C-K>		<C-U>
-
-" Map ½ to something useful
-map ½ $
-cmap ½ $
-imap ½ $
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
@@ -391,7 +353,6 @@ inoremap $3 {}<esc>i
 inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
@@ -428,13 +389,17 @@ endfunc
 
 
 "====[ Escape insert mode via 'jj' ]=============================
-
 imap jj <ESC>
 
 "====[ I'm sick of typing :%s/.../.../g ]=======
 
 nmap S :%s//g<LEFT><LEFT>
 xmap S :s//g<LEFT><LEFT>
+
+
+
+
+
 
 "====[ Toggle visibility of naughty characters ]============
 
@@ -456,12 +421,14 @@ augroup VisibleNaughtiness
 augroup END
 
 
+
 "====[ Set up smarter search behaviour ]=======================
 
 set hlsearch        "Highlight all matches
 highlight clear Search
 highlight       Search    ctermfg=White  ctermbg=Black  cterm=bold
 highlight    IncSearch    ctermfg=White  ctermbg=Red    cterm=bold
+
 
 
 "=====[ Enable smartwrapping ]==================================
@@ -505,26 +472,6 @@ nmap ; :
 xmap ; :
 
 
-"=====[ Make Visual modes work better ]==================
-
-" Visual Block mode is far more useful that Visual mode (so swap the commands)...
-"nnoremap v <C-V>
-"nnoremap <C-V> v
-
-"xnoremap v <C-V>
-"xnoremap <C-V> v
-
-"Square up visual selections...
-" set virtualedit=block
-
-" Make BS/DEL work as expected in visual modes (i.e. delete the selected text)...
-"xmap <BS> x
-
-" Make vaa select the entire file...
-"xmap aa VGo1G
-
-
-
 "=====[ Miscellaneous features (mainly options) ]=====================
 
 set title           "Show filename in titlebar of window
@@ -562,7 +509,7 @@ set infercase                       "Adjust completions to match case
 
 set noshowmode                      "Suppress mode change messages
 
-set updatecount=10                  "Save buffer every 10 chars typed
+set updatecount=50                  "Save buffer every 10 chars typed
 
 
 " Keycodes and maps timeout in 3/10 sec...
@@ -581,6 +528,7 @@ nmap $$ $<i}``
 " Insert various shebang lines...
 iab hbc #! /bin/csh
 iab hbs #! /bin/sh
+
 
 "=====[ Show help files in a new tab, plus add a shortcut for helpg ]==============
 
@@ -766,7 +714,7 @@ function! BRF_ToggleRuler ()
     if strlen(&rulerformat)
         let &rulerformat = ''
     else
-        let &rulerformat = g:BRF_new_rulerformat
+        let &rulerformat = g:BRF_new_ruhighlightlerformat
     endif
     set ruler
     redraw
@@ -794,9 +742,10 @@ endfunction
 
 "=====[ Configure change-tracking ]========
 
-let g:changes_hl_lines=1
-let g:changes_verbose=0
-let g:changes_autocmd=1
+" let g:changes_hl_lines=1
+" let g:changes_verbose=0
+" let g:changes_autocmd=1
+
 
 
 "======[ Breakindenting ]========
