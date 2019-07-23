@@ -3494,7 +3494,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Downloads/Meeting Notes</string>
+	<string>~</string>
 	<key>NSNavLastUserSetHideExtensionButtonState</key>
 	<true/>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -3551,13 +3551,13 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>269 172 796 486 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1254 381 570 427 0 0 1920 1080 </string>
+	<string>0 80 1920 977 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>247 118 585 427 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>268 80 585 427 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>289 80 585 377 0 0 1920 1080 </string>
+	<string>289 80 585 427 0 0 1920 1080 </string>
 	<key>NeverWarnAboutShortLivedSessions_3FEF7356-5731-4CE9-9F1C-D68FBDE56216</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_3FEF7356-5731-4CE9-9F1C-D68FBDE56216_selection</key>
@@ -4390,7 +4390,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/goinfre/tcajee/Downloads/Meeting Notes</string>
+	<string>/goinfre/tcajee/.configs</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
