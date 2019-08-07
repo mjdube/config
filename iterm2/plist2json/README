@@ -1,0 +1,16 @@
+README
+
+See comments at top of code and gpl.txt for license.
+
+Help, support: rab at robertbeverly.com
+
+Use:
+
+python ~/some/dir/batch-plist-to-json.py
+
+Drag and drop folders onto the terminal or type in directory names. Creates a new directory for the output if the one you specify doesn't exist… outputs to the same directory as input if you leave the output field blank.
+
+Why?
+Because you made a bunch of plist files for your OS X or iOS apps, and now you want to use JSON for better portability and ease of use.
+
+If it helps you out, buy me a beer some time.
