@@ -1,0 +1,10 @@
+You'll need JSONKit to build the tool. Place JSONKit.m and JSONKit.h in the same directory as convertPlistToJSON.m, and then compile with:
+
+shell% gcc -o convertPlistToJSON convertPlistToJSON.m JSONKit.m -framework Foundation
+Usage:
+
+shell% convertPlistTOJSON
+usage: convertPlistToJSON FILE_PLIST FILE_JSON
+
+shell% convertPlistTOJSON input.plist output.json
+Reads in input.plist, and writes the pretty printed JSON to output.json.
